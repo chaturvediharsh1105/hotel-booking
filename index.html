@@ -1,11 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=Hotel, initial-scale=1.0">
-    <title>Document</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hotel Booking — Home</title>
 </head>
 <body>
-    <h2>Hotel Booking</h2>
+        <header>
+            <div class="logo">
+                <div class="mark">HB</div>
+                <div>
+                    <div style="font-weight:700">HotelBooking</div>
+                    <div style="font-size:12px;color:var(--muted)">Find your perfect stay</div>
+                </div>
+            </div>
+            <nav class="nav-hidden">
+                <a href="#">Destinations</a>
+                <a href="#">Deals</a>
+                <a href="#">Support</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div>
+                        <h1>Discover great places to stay</h1>
+                        <p>Search hotels, compare prices, and book the perfect room for your next trip.</p>
+                        <div class="features">
+                            <div class="card">
+                                <strong>Best Prices</strong>
+                                <div style="color:var(--muted);margin-top:8px">Exclusive deals and price-match guarantee.</div>
+                            </div>
+                            <div class="card">
+                                <strong>Handpicked Hotels</strong>
+                                <div style="color:var(--muted);margin-top:8px">Curated stays for comfort and value.</div>
+                            </div>
+                            <div class="card">
+                                <strong>24/7 Support</strong>
+                                <div style="color:var(--muted);margin-top:8px">We're here to help anytime.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-card">
+                        <form id="searchForm">
+                            <div class="field">
+                                <label>Destination</label>
+                                <input type="text" id="destination" placeholder="City or hotel name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="col field">
+                                    <label>Check-in</label>
+                                    <input type="date" id="checkin" required>
+                                </div>
+                                <div class="col field">
+                                    <label>Check-out</label>
+                                    <input type="date" id="checkout" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Guests</label>
+                                <div style="display:flex;align-items:center;justify-content:space-between">
+                                    <div class="guests">
+                                        <button type="button" id="decGuest">-</button>
+                                        <div id="guestCount">1</div>
+                                        <button type="button" id="incGuest">+</button>
+                                    </div>
+                                    <button class="btn" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:28px">
+                    <strong>Featured hotels</strong>
+                    <div class="hotel-grid">
+                        <div class="hotel card">
+                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1b7b5f" alt="Hotel 1">
+                            <div class="meta">
+                                <div style="font-weight:700">Seaside Resort</div>
+                                <div style="color:var(--muted);font-size:13px">From $129/night · 4.6 ★</div>
+                            </div>
+                        </div>
+                        <div class="hotel card">
+                            <img src="https://images.unsplash.com/photo-1501117716987-c8e5f6d1335a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=b4f6b" alt="Hotel 2">
+                            <div class="meta">
+                                <div style="font-weight:700">City Central Hotel</div>
+                                <div style="color:var(--muted);font-size:13px">From $99/night · 4.4 ★</div>
+                            </div>
+                        </div>
+                        <div class="hotel card">
+                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1b7b5f" alt="Hotel 3">
+                            <div class="meta">
+                                <div style="font-weight:700">Mountain Lodge</div>
+                                <div style="color:var(--muted);font-size:13px">From $149/night · 4.8 ★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+                <div>© 2026 HotelBooking — All rights reserved</div>
+                <div style="color:var(--muted)">Privacy · Terms · Help</div>
+            </div>
+        </footer>
+
+        <script>
+            const inc = document.getElementById('incGuest');
+            const dec = document.getElementById('decGuest');
+            const count = document.getElementById('guestCount');
+            let guests = 1;
+            inc.addEventListener('click',()=>{guests=Math.min(16,guests+1);count.textContent=guests});
+            dec.addEventListener('click',()=>{guests=Math.max(1,guests-1);count.textContent=guests});
+            document.getElementById('searchForm').addEventListener('submit',e=>{
+                e.preventDefault();
+                const dest=document.getElementById('destination').value;
+                const inDate=document.getElementById('checkin').value;
+                const outDate=document.getElementById('checkout').value;
+                alert(`Searching: ${dest}\n${inDate} → ${outDate}\nGuests: ${guests}`);
+            });
+        </script>
+    </body>
+</html>
 </body>
 </html>
